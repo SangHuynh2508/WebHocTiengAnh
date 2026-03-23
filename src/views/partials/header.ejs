@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'English Learning' %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">English<span>Learning</span></a>
+            <ul class="nav-links">
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <% if (userRole === 'admin') { %>
+                        <li><a href="/admin">Dashboard</a></li>
+                        <li><a href="/admin/users">User Management</a></li>
+                        <li><a href="/admin/content">Content</a></li>
+                        <li><a href="/auth/logout" class="nav-btn">Logout</a></li>
+                    <% } else if (userRole === 'instructor') { %>
+                        <li><a href="/instructor">Dashboard</a></li>
+                        <li><a href="/instructor/questions">Exercises</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/auth/logout" class="nav-btn">Logout</a></li>
+                    <% } else { %>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/vocabulary">Vocabulary</a></li>
+                        <li><a href="/grammar">Grammar</a></li>
+                        <li><a href="/profile/progress">Progress</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/auth/logout" class="nav-btn">Logout</a></li>
+                    <% } %>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register" class="nav-btn">Register</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">

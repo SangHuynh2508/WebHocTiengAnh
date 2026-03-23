@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <h2>Grammar Lessons</h2>
+        <p>Current Level: <span class="badge badge-<%= level.toLowerCase() %>"><%= level %></span></p>
+    </div>
+
+    <div class="grammar-list">
+        <% if (lessons.length > 0) { %>
+            <% lessons.forEach(lesson => { %>
+                <article class="card grammar-card">
+                    <h3><%= lesson.title %></h3>
+                    <div class="grammar-content">
+                        <%- lesson.content %>
+                    </div>
+                </article>
+            <% }) %>
+        <% } else { %>
+            <div class="empty-state">
+                <p>No grammar lessons found for your level. Please stay tuned!</p>
+            </div>
+        <% } %>
+    </div>
+<%- include('../partials/footer') %>

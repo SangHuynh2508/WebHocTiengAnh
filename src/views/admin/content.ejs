@@ -1,0 +1,95 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <a href="/admin" class="back-link">← Back to Dashboard</a>
+        <h2>Content Management</h2>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="content-section">
+        <h3>📝 Questions (<%= questions.length %>)</h3>
+        <% if (questions.length > 0) { %>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Level</th>
+                            <th>Topic</th>
+                            <th>Creator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% questions.forEach(q => { %>
+                            <tr>
+                                <td><%= q.questionText %></td>
+                                <td><span class="badge badge-<%= q.level.toLowerCase() %>"><%= q.level %></span></td>
+                                <td><%= q.topic %></td>
+                                <td><%= q.createdBy ? q.createdBy.username : 'System' %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <div class="empty-state"><p>No questions found.</p></div>
+        <% } %>
+    </div>
+
+    <!-- Vocabulary Section -->
+    <div class="content-section">
+        <h3>📚 Vocabulary (<%= vocabulary.length %>)</h3>
+        <% if (vocabulary.length > 0) { %>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Vietnamese Meaning</th>
+                            <th>Topic</th>
+                            <th>Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% vocabulary.forEach(v => { %>
+                            <tr>
+                                <td><strong><%= v.word %></strong></td>
+                                <td><%= v.vietnameseMeaning %></td>
+                                <td><%= v.topic %></td>
+                                <td><span class="badge badge-<%= v.level.toLowerCase() %>"><%= v.level %></span></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <div class="empty-state"><p>No vocabulary found.</p></div>
+        <% } %>
+    </div>
+
+    <!-- Grammar Section -->
+    <div class="content-section">
+        <h3>⚖️ Grammar (<%= grammar.length %>)</h3>
+        <% if (grammar.length > 0) { %>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% grammar.forEach(g => { %>
+                            <tr>
+                                <td><%= g.title %></td>
+                                <td><span class="badge badge-<%= g.level.toLowerCase() %>"><%= g.level %></span></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <div class="empty-state"><p>No grammar lessons found.</p></div>
+        <% } %>
+    </div>
+<%- include('../partials/footer') %>

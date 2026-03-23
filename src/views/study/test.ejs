@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <h2>General Assessment</h2>
+        <p>Test your knowledge. Select the best answer for each question.</p>
+    </div>
+
+    <% if (questions.length > 0) { %>
+        <form action="/test/submit" method="POST" class="assessment-form">
+            <% questions.forEach((q, index) => { %>
+                <div class="card question-card">
+                    <p class="question-text"><strong>Q<%= index + 1 %>:</strong> <%= q.questionText %></p>
+                    <div class="options">
+                        <% q.options.forEach(option => { %>
+                            <label class="option-label">
+                                <input type="radio" name="answers[<%= q._id %>]" value="<%= option %>" required>
+                                <span class="option-text"><%= option %></span>
+                            </label>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-large">Submit Assessment</button>
+            </div>
+        </form>
+    <% } else { %>
+        <div class="empty-state">
+            <p>No questions available for your level yet. Please check back later!</p>
+        </div>
+    <% } %>
+<%- include('../partials/footer') %>

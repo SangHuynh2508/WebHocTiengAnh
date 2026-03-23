@@ -1,0 +1,89 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+        <h2>Learning Progress</h2>
+    </div>
+
+    <div class="progress-grid">
+        <div class="main-stats">
+            <div class="card">
+                <h3>Performance by Level</h3>
+                <div class="level-progress-card">
+                    <div class="level-info">
+                        <span>Beginner</span>
+                        <span><%= stats.levelData['Beginner'] %>%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-beginner"></div>
+                    </div>
+                </div>
+                <div class="level-progress-card">
+                    <div class="level-info">
+                        <span>Intermediate</span>
+                        <span><%= stats.levelData['Intermediate'] %>%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-intermediate"></div>
+                    </div>
+                </div>
+                <div class="level-progress-card">
+                    <div class="level-info">
+                        <span>Advanced</span>
+                        <span><%= stats.levelData['Advanced'] %>%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-advanced"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Recent Test History</h3>
+                <% if (stats.testResults.length > 0) { %>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th align="left">Date</th>
+                                <th align="center">Result</th>
+                                <th align="right">Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% stats.testResults.forEach(result => { %>
+                                <tr>
+                                    <td><%= new Date(result.date).toLocaleDateString('en-US') %></td>
+                                    <td align="center"><strong><%= result.score %></strong> / <%= result.totalQuestions %></td>
+                                    <td align="right"><%= Math.round((result.score / result.totalQuestions) * 100) %>%</td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <p class="empty-state">You haven't taken any tests yet.</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="sidebar-stats">
+            <div class="card" style="text-align: center;">
+                <h3>Overview</h3>
+                <p class="stat-number"><%= stats.totalTests %></p>
+                <p>Tests taken</p>
+                <hr style="margin: 1rem 0; border: 0; border-top: 1px solid var(--border);">
+                <p class="stat-number"><%= stats.avgScore %>%</p>
+                <p>Average Score</p>
+            </div>
+            
+            <div class="card" style="margin-top: 1.5rem; background: var(--primary); color: white;">
+                <h3>Goals</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Complete 10 tests at each level to earn a virtual certificate!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Set progress bar widths dynamically to satisfy static linters
+        document.getElementById('bar-beginner').style.width = '<%= stats.levelData["Beginner"] || 0 %>%';
+        document.getElementById('bar-intermediate').style.width = '<%= stats.levelData["Intermediate"] || 0 %>%';
+        document.getElementById('bar-advanced').style.width = '<%= stats.levelData["Advanced"] || 0 %>%';
+    </script>
+<%- include('../partials/footer') %>

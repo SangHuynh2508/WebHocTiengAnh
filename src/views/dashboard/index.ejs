@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+    <div class="dashboard-header">
+        <h2>Hello, <%= user.username %>! 👋</h2>
+        <p>Your English learning journey awaits.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Vocabulary</h3>
+            <p>Expand your vocabulary with themed lessons.</p>
+            <a href="/vocabulary" class="btn">Start Learning</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Grammar</h3>
+            <p>Master the basic rules of English grammar.</p>
+            <a href="/grammar" class="btn">View Lessons</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Assessment</h3>
+            <p>Test your knowledge with quick quizzes.</p>
+            <a href="/test" class="btn">Take Test</a>
+        </div>
+        <div class="card" style="border: 2px solid var(--accent); background: rgba(14, 165, 233, 0.05);">
+            <div class="card-icon">📊</div>
+            <h3>Progress</h3>
+            <p>You have completed <strong><%= totalTests %></strong> tests.</p>
+            <a href="/profile/progress" class="btn" style="background: var(--accent); color: white;">View Details</a>
+        </div>
+    </div>
+
+<%- include('../partials/footer') %>

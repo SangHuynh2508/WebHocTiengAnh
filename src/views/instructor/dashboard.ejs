@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+    <div class="dashboard-header">
+        <h2>Hello, Instructor <%= user.username %>!</h2>
+        <p>Manage your exercises and questions.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Exercises Created</h3>
+            <p class="stat-number"><%= totalQuestions %></p>
+            <a href="/instructor/questions" class="btn">View List</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">➕</div>
+            <h3>Create New Exercise</h3>
+            <p>Add new questions for students.</p>
+            <a href="/instructor/questions/create" class="btn">Create Now</a>
+        </div>
+    </div>
+<%- include('../partials/footer') %>

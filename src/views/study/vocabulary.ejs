@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <a href="/vocabulary" class="back-link">← Back to Topics</a>
+        <h2>Topic: <%= topic %></h2>
+    </div>
+
+    <div class="vocabulary-list">
+        <% words.forEach(word => { %>
+            <div class="card vocab-card">
+                <div class="vocab-top">
+                    <h3 class="word"><%= word.word %></h3>
+                    <button class="btn-speak" data-word="<%= word.word %>" title="Listen">
+                        <span class="icon">🔊</span>
+                    </button>
+                </div>
+                <div class="vocab-body">
+                    <p class="vietnamese-meaning"><%= word.vietnameseMeaning %></p>
+                    <p class="definition"><strong>Definition:</strong> <%= word.definition %></p>
+                    <% if (word.example) { %>
+                        <p class="example"><em>"<%= word.example %>"</em></p>
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+
+    <script src="/js/audio.js"></script>
+<%- include('../partials/footer') %>

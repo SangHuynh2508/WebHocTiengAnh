@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+    <div class="result-container">
+        <div class="card result-card">
+            <div class="result-icon"><%= score >= total / 2 ? '🎉' : '💪' %></div>
+            <h2>Assessment Complete!</h2>
+            <p class="score-display">You scored <strong><%= score %></strong> out of <strong><%= total %></strong></p>
+            <div class="result-actions">
+                <a href="/dashboard" class="btn">Back to Dashboard</a>
+                <a href="/test" class="btn btn-outline">Try Again</a>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer') %>

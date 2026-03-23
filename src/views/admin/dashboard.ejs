@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+    <div class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <p>System Overview.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Students</h3>
+            <p class="stat-number"><%= stats.totalUsers %></p>
+            <a href="/admin/users" class="btn">Manage</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Instructors</h3>
+            <p class="stat-number"><%= stats.totalInstructors %></p>
+            <% if (stats.pendingInstructors > 0) { %>
+                <p style="color: #d97706; font-weight: 600; margin-bottom: 0.5rem;">⚠️ <%= stats.pendingInstructors %> pending</p>
+            <% } %>
+            <a href="/admin/users" class="btn">Manage</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Questions</h3>
+            <p class="stat-number"><%= stats.totalQuestions %></p>
+            <a href="/admin/content" class="btn">View Content</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Vocabulary</h3>
+            <p class="stat-number"><%= stats.totalVocabulary %></p>
+            <a href="/admin/content" class="btn">View Content</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Grammar</h3>
+            <p class="stat-number"><%= stats.totalGrammar %></p>
+            <a href="/admin/content" class="btn">View Content</a>
+        </div>
+    </div>
+<%- include('../partials/footer') %>

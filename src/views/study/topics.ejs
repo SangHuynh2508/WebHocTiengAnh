@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+    <div class="study-header">
+        <h2>Vocabulary Topics</h2>
+        <p>Current Level: <span class="badge badge-<%= level.toLowerCase() %>"><%= level %></span></p>
+    </div>
+
+    <% if (topics.length > 0) { %>
+        <div class="topics-grid">
+            <% topics.forEach(topic => { %>
+                <div class="card topic-card">
+                    <h3><%= topic %></h3>
+                    <a href="/vocabulary/<%= topic %>" class="btn">Learn This</a>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <div class="empty-state">
+            <p>No topics found for your level. Please wait for the administrator to add more or try another level.</p>
+        </div>
+    <% } %>
+<%- include('../partials/footer') %>
